@@ -1,7 +1,7 @@
 spec:
   inputs:
     stage:
-      default: RX_CheckVariables
+      default: RX-CheckVariables
 ---
 RX-CheckVariables-Component:
   stage: $[[ inputs.stage ]]
