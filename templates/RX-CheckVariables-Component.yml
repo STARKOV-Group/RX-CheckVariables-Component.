@@ -3,7 +3,7 @@ spec:
     stage:
       default: RX_CheckVariables
 ---
-component-Hello-World:
+RX-CheckVariables-Component:
   stage: $[[ inputs.stage ]]
   script:
     # Check exist variable RXVersion
