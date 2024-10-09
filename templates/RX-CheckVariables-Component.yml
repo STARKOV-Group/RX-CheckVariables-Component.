@@ -1,0 +1,21 @@
+spec:
+  inputs:
+    stage:
+      default: RX_CheckVariables
+---
+component-Hello-World:
+  stage: $[[ inputs.stage ]]
+  script:
+    # Check exist variable RXVersion
+    - if ($RXVERSION -eq $null) { echo "Not exist variable RXVERSION"; exit 1 } else { echo "Current RX Version ${RXVERSION}" }
+
+    # Check exist DDS version on server
+    - if ($DDSFolderPath -eq $null) { echo "Not Exist Variable DDSFolderPath"; exit 1 }
+    - if (Test-Path $DDSFolderPath\$RXVERSION) { echo "DDS version ${RXVERSION} Founded" } else { echo "Not Found DDSVersion On Server. PATH $DDSFolderPath\$RXVERSION"; exit 1 }
+
+    # Check exist DRXTool version on server
+    - if ($DTFolderPath -eq $null) { echo "Not Exist Variable DTFolderPath"; exit 1 }
+    - if (Test-Path $DTFolderPath\$RXVERSION) { echo "DRXTool version ${RXVERSION} Founded" } else { echo "Not Found DRToolVersion On Server PATH:$DTFolderPath\$RXVERSION"; exit 1 }
+
+    # Check exist variable ProjectsFolderPath
+    - if ($ProjectsFolderPath -eq $null) { echo "Not Exist Variable ProjectsFolderPath"; exit 1 } else { echo "ProjectsFolderPath ${ProjectsFolderPath}" }
