@@ -1,10 +1,10 @@
 spec:
   inputs:
-    stage:
+    stageCheckVariables:
       default: RX-CheckVariables
 ---
 RX-CheckVariables-Component:
-  stage: $[[ inputs.stage ]]
+  stage: $[[ inputs.stageCheckVariables ]]
   script:
     # Check exist variable RXVersion
     - if ($RXVERSION -eq $null) { echo "Not exist variable RXVERSION"; exit 1 } else { echo "Current RX Version ${RXVERSION}" }
