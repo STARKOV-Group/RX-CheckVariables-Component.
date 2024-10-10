@@ -3,11 +3,12 @@ spec:
     stage:
       default: RX-CheckVariable
     rules:
-      default: '$CI_COMMIT_BRANCH == "Test" ||  $CI_COMMIT_BRANCH == "test"'
+      default: '"true" == "true"'
 ---
 RX-CheckVariables-Component:
   stage: $[[ inputs.stage ]]
-  rules: $[[ inputs.rules ]]
+  rules: 
+    - if: $[[ inputs.rules ]]
   script:
     # Check exist variable RXVersion
     - if ($RXVERSION -eq $null) { echo "Not exist variable RXVERSION"; exit 1 } else { echo "Current RX Version ${RXVERSION}" }
