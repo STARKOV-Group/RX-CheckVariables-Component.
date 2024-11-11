@@ -10,6 +10,7 @@ RX-CheckVariables-Component:
   rules: 
     - if: $[[ inputs.rules ]]
   script:
+    - Get-ChildItem env:
     # Check exist variable RXVersion
     - if ($RXVERSION -eq $null) { echo "Not exist variable RXVERSION"; exit 1 } else { echo "Current RX Version ${RXVERSION}" }
 
