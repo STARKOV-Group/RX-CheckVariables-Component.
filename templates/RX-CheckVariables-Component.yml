@@ -23,3 +23,11 @@ RX-CheckVariables-Component:
 
     # Check exist variable ProjectsFolderPath
     - if ($ProjectsFolderPath -eq $null) { echo "Not Exist Variable ProjectsFolderPath"; exit 1 } else { echo "ProjectsFolderPath ${ProjectsFolderPath}" }
+    
+    # Check for server ip, user name and password if DeployDestination is defined
+    - if ($DeployDestination -ne $null)
+      {
+        if (!(Test-Path variable:"$($DeployDestination)DeployIpServer")) {echo "Variable $($DeployDestination)DeployIpServer not defined"; exit 1}
+        if (!(Test-Path variable:"$($DeployDestination)DeployUserName")) {echo "Variable $($DeployDestination)DeployUserName not defined"; exit 1}
+        if (!(Test-Path variable:"$($DeployDestination)DeployUserPassword")) {echo "Variable $($DeployDestination)DeployUserPassword not defined"; exit 1}
+      }
