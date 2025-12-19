@@ -6,6 +6,8 @@ spec:
       default: '"true" == "true"'
 ---
 RX-CheckVariables-Component:
+  tags:
+    - $RunnerTags
   stage: $[[ inputs.stage ]]
   rules: 
     - if: $[[ inputs.rules ]]

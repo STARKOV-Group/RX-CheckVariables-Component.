@@ -1,5 +1,11 @@
-# RX CheckVariables
+# Подготовка переменных (RX CheckVariables Component)
 
-Используется для проверки параметров перед началом работы. Добавляем в этот блок все необходимые проверки для общего пользования в CI_CD проектов RX. 
+#### Описание:
 
-Исключения: Уникальные параметры для проекта, для них лучше добавить отдельный компонент либо проверять явно этапом в проекте
+Проверка всех нужных для остальных компонентов переменных и директорий.
+
+#### Логика:
+
+Проверяет наличие переменных: $[RXVERSION](https://git.starkovgrp.ru/ci-cd-components/Completed-RXDTDeploy-Component#rxversion), $[DDSFolderPath](https://git.starkovgrp.ru/ci-cd-components/Completed-RXDTDeploy-Component#ddsfolderpath), $[DTFolderPath](https://git.starkovgrp.ru/ci-cd-components/Completed-RXDTDeploy-Component#dtfolderpath), $[ProjectsFolderPath](https://git.starkovgrp.ru/ci-cd-components/Completed-RXDTDeploy-Component#projectsfolderpath)  
+Проверяет наличие директорий: \$[DDSFolderPath](https://git.starkovgrp.ru/ci-cd-components/Completed-RXDTDeploy-Component/-/tree/main?ref_type=heads#ddsfolderpath)/\$[RXVERSION](https://git.starkovgrp.ru/ci-cd-components/Completed-RXDTDeploy-Component/-/tree/main?ref_type=heads#rxversion), \$[DTFolderPath](https://git.starkovgrp.ru/ci-cd-components/Completed-RXDTDeploy-Component/-/tree/main?ref_type=heads#dtfolderpath)/\$[RXVERSION](https://git.starkovgrp.ru/ci-cd-components/Completed-RXDTDeploy-Component/-/tree/main?ref_type=heads#rxversion)  
+Проверяет наличие переменных с префиксом $[DeployDestination](https://git.starkovgrp.ru/ci-cd-components/Completed-RXDTDeploy-Component/-/tree/main?ref_type=heads#deploydestination), если он указан
